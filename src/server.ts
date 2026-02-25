@@ -37,7 +37,8 @@ app.post("/generate-test-pdf", async (req, res) => {
   const buffer = Buffer.from(pdfBytes);
   const key = `test-${Date.now()}.pdf`;
   await uploadPdf(key, buffer);
-  res.json({ ok: true, file: key });
+  console.log("Uploaded to R2:", key);
+  res.json({ ok: true, key });
 });
 
 app.use((req, res) => {
